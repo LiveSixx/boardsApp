@@ -1,0 +1,27 @@
+<div class="expansion-header" [ngStyle]="{'cursor':formSatus ? 'default' : 'pointer' }">
+    <div class="expansion-header-elements" (click)="formOpen(true)">
+        <mat-icon aria-hidden="true" aria-label="icon" class="material-icon md">
+            {{icon}}</mat-icon>
+        <div class="expansion-title">
+            {{title}}
+        </div>
+    </div>
+    <div *ngIf="formSatus === true" class="close-button" (click)="formOpen(false)">
+        <mat-icon  aria-hidden="close" aria-label="icon" class="material-icon sm ">close</mat-icon>
+    </div>
+</div>
+<div [@smoothClose]="!formSatus? 'initial': 'final'">   
+    <div class="home-section-form-container">
+        <form class="home-section-form-container" [formGroup]="addBoardForm" (keydown.enter)="$event.preventDefault()">
+            
+            <input type="text" formControlName="item" name="borderName" aria-label="Название доски" placeholder="Название доски" [(ngModel)]="borderName" autocomplete="off">   
+            <div class="home-section-form-buttons">
+            <button class="btn-save" [disabled]="addBoardForm.invalid" (click)="addBoard(borderName)" type="submit">Сохранить</button>
+            <button class="btn-cancel" (click)="clear()"  type="submit">Отмена</button>
+            </div>
+            
+        </form>
+    </div>
+    <ng-content>
+    </ng-content>
+</div>

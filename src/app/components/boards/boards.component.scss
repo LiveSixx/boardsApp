@@ -1,0 +1,180 @@
+@use '@angular/material' as mat;
+@use './../../../styles.scss' as cs;
+@use 'sass:map';
+
+*{
+    font-display: block;
+}
+
+.list-section-wrapper{
+    font-family: "Roboto";
+    display: flex;
+    flex-direction: column;
+
+}
+
+.list-section-wrapper app-list{
+    @include mat.elevation(4);
+    overflow: hidden;
+    margin: 8px;
+}
+
+
+
+.active-list{
+    transition: (0.2s);
+    @include mat.elevation(8);
+    border-bottom: 5px solid cs.$accent-color;
+}
+
+
+
+.board-section-wrapper{
+    padding-right: 10%;
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+}
+
+.board-section-container{
+    align-items:baseline;
+    justify-content: space-between;
+    min-height: 500px;
+    display: flex;
+    flex-direction: row;
+    margin: 36px;
+}
+
+.board-header{
+    @include mat.elevation(4);
+    position: relative;
+    padding: 20px 24px;
+    border-radius: 14px;
+    background-color: cs.$primary-color;
+}
+
+.board-header-elements{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.board-title{
+    padding: 12px 0;
+    white-space: nowrap;
+    word-break: none;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-left: 6%;
+    width: 400px;
+    font-weight: 400;
+    font-size: 48px;
+    color:cs.$text-color;
+}
+
+.board-section-data{
+    display: flex;
+    flex-direction: column;
+}
+
+.board-section-board-addBtn{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    max-width: 50%;
+    font-family: "Roboto";
+    align-items: center;
+    margin: 34px 0px;
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    font-weight: 400;
+    border-radius: 6px;
+    padding: 20px;
+    background-color: cs.$secondary-color;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    letter-spacing: 0.4px;
+    color: cs.$text-color;
+    @include mat.elevation(3);
+    
+    &:hover{
+    background-color: cs.$secondary-color-hover;
+    transition: 0.2s;
+    @include mat.elevation(6);
+    }
+
+}
+
+.board-section-form-addList{
+    margin-left: 3%;
+}
+
+.close-button span {
+    margin-top:16%;
+    
+}
+
+.close-button{
+    margin-left: 5%;
+    border-radius: 50%;
+    background-color: transparent;
+    padding: 8px 12px;
+    
+    &:hover{
+        cursor: pointer;
+        transition: 0.2s;
+        background-color: rgba(0, 111, 167, 0.2);
+        border-radius: 50%;
+    }
+}
+
+.board-section-board-addBtn-title{
+    margin-left: 3%;
+    overflow-wrap: none;
+    font-weight: 400;
+    font-size: 24px;
+    color:cs.$text-color;
+}
+
+.board-section-form-container{
+    letter-spacing: 0.4px;
+    align-items: center;
+    @include mat.elevation(3);
+    padding: 2px 3%;
+    border-radius: 6px;
+    background-color: cs.$secondary-color;
+
+    margin: 34px 0px;
+    display: flex;
+    flex-direction: row;
+}
+
+input[type=text], select {
+    font-family: "Roboto";
+    font-size: 26px;
+    font-weight: 100;
+    color: cs.$text-color;
+    width: 100%;
+    padding: 8px 12px;
+    margin: 8px 12px;
+    display: inline-block;
+    background-color: cs.$form-color;
+    border: none;
+    border-radius: 6px;
+    box-sizing: border-box;
+  }
+
+  input[type=text]::placeholder {
+    font-size: 26px;
+    font-weight: 100;
+    opacity: .8;
+    color: cs.$inactive-color;
+}
+
+input[type=text]:focus {
+    transition: 0.2s;
+    outline: none;
+}

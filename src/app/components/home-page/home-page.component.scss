@@ -1,0 +1,94 @@
+@use '@angular/material' as mat;
+@use './../../../styles.scss' as cs;
+@use 'sass:map';
+
+.home-section-wrapper{
+    padding-right: 10%;
+    overflow: hidden;
+    position: relative;
+    height: 610px;
+    //background-color: #4bc7e6;
+}
+
+.home-section-container{
+    align-items:baseline;
+    justify-content: space-between;
+    min-height: 500px;
+    display: flex;
+    flex-direction: row;
+    margin: 36px;
+}
+
+
+.home-section-boards-container{
+    display: flex;
+    flex-direction: column;
+    margin: 0px 16px;
+    min-width: 25%;
+    max-width: 25%;
+    &:hover{
+        max-width: 40%;
+        transition: 1s;
+    }
+    
+}
+
+.home-section-board{
+    font-family: "Roboto";
+    align-items: baseline;
+    margin: 16px;
+    display: flex;
+    text-decoration: none;
+    font-weight: 400;
+    border-radius: 6px;
+    padding: 14px;
+    background-color: cs.$secondary-color;
+    border: none;
+    cursor: pointer;
+    font-size: 36px;
+    justify-content: space-between;
+    letter-spacing: 0.4px;
+    color: cs.$text-color;
+    @include mat.elevation(4);
+  
+  &:hover{
+    background-color: cs.$secondary-color-hover;
+    transition: 0.2s;
+    transform: scale(1.01);
+    transform: translateX(5%);
+    @include mat.elevation(6);  
+    width:100%;
+  }
+  }
+
+.home-section-board-title{
+    white-space: nowrap;
+    word-break: none;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-right: 6px;
+    padding: 12px;
+}
+
+
+.board-icon-delete{
+    visibility: hidden;
+    @include mat.elevation(4);
+    left: 55%;
+    top: 0%;
+    position: relative;
+    padding: 10px;
+    border-radius: 50%;
+    background-color: cs.$accent-color;
+}
+
+.home-section-board:hover .board-icon-delete {
+    transition-property: visibility;
+    transition-duration: 0.5s;
+    transition-delay: 0s;
+    visibility: visible;
+    
+    transition-property: left;
+    left: 48%;
+    
+}

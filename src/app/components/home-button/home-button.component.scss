@@ -1,0 +1,18 @@
+@use '@angular/material' as mat;
+@use './../../../styles.scss' as cs;
+@use 'sass:map';
+
+.home-section-smile{
+    font-display: block;
+    position: relative;
+    @include mat.elevation(6);
+    background-color: cs.$primary-color;
+    padding: 40px;
+    border-radius: 50%;
+    &:hover{
+        cursor: pointer;
+        transition: 0.5s;
+        transform: scale(1.1);
+        @include mat.elevation(8);
+    }
+}

@@ -1,0 +1,9 @@
+@use '@angular/material' as mat;
+@use './../../../../styles.scss' as cs;
+@use 'sass:map';
+
+div {
+    font-size: 16px;
+    background-color: cs.$secondary-color;
+    border-radius: 16px;
+}

@@ -1,0 +1,22 @@
+<main class="home-section-wrapper">
+    <div class="home-section-container">
+        <app-expansion>
+            <app-expansion-item title="Новая доска" icon="add_circle" formText="Название доски">
+                </app-expansion-item>
+            
+        </app-expansion>
+        <app-home-button routerLink=""></app-home-button>
+        <div class="home-section-boards-container">
+            <div class="home-section-board" *ngFor="let board of boardsList" routerLink="board/{{board.boardId}}/">
+                        
+                        <div class="home-section-board-title">{{board.boardTitle}}</div>
+                        <div class="board-icon-delete" (click)="deleteBoard(board)">
+                            <mat-icon  class="task-icon-color" aria-hidden="done" aria-label="icon" class="material-icon ssm ">close</mat-icon>
+                        </div> 
+                        <mat-icon style="padding-right: 10px" aria-hidden="true" aria-label="icon" class="material-icon md">chevron_right</mat-icon>
+                        
+            </div>
+        </div>
+    </div>
+    
+</main>

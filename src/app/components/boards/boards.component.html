@@ -1,0 +1,48 @@
+<main class="board-section-wrapper">
+    <div class="board-section-container">
+        <div class="board-section-data">
+            
+            <div class="board-header">
+                <div class="board-header-elements">
+                    <mat-icon aria-hidden="true" aria-label="icon" class="material-icon md">
+                    description</mat-icon>
+                    <div class="board-title">
+                        {{board.boardTitle}}
+                    </div>
+                </div>
+            </div>
+              <div *ngIf="addListBtn === false" class="board-section-board-addBtn" (click)="addListBtnPressed(true)">       
+                    <mat-icon aria-hidden="true" aria-label="icon" class="material-icon sm">add_circle</mat-icon>
+                    <div class="board-section-board-addBtn-title">Добавить список</div>
+                </div>
+                <div *ngIf="addListBtn === true" class="board-section-form-container">
+                    <mat-icon aria-hidden="true" aria-label="icon" class="material-icon sm">format_list_numbered</mat-icon>
+                    
+                    <form autocomplete="off"  class="board-section-form-addList" [formGroup]="addListForm">
+                        <input  (keyup.enter)="addList(); clear()" 
+                        type="text" 
+                        formControlName="listItem" 
+                        name="listName" 
+                        aria-label="Название списка" 
+                        [(ngModel)]="listName" 
+                        placeholder="Название списка" 
+                        [(ngModel)]="listName">
+                    </form>
+                    <div class="close-button" (click)="addListBtnPressed(false)" >
+                        <span class="material-icons material-icon sm">close</span>
+                    </div>
+                    
+                </div>  
+                
+        </div>
+        <app-home-button routerLink=""></app-home-button>
+            <div class="list-section-wrapper">
+                <app-list [list]="list"
+                [class.active-list]="selectedList === i"
+                (click)="selectedList = i" 
+                *ngFor="let list of boardLists; let i=index">
+            </app-list>
+            </div>
+    </div>
+    
+</main>
