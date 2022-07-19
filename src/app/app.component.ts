@@ -12,7 +12,7 @@ import { Board } from './board';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Trello 2.0';
+  title = 'Trello 3.0';
   
   constructor (
     private titleService: Title, 
