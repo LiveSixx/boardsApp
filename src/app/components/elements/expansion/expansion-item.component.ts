@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { state, trigger, style, transition, animate } from '@angular/animations';
 
 import { HomePageComponent } from './../../home-page/home-page.component';
-import { Board } from './../../../board';
 
 @Component({
   selector: 'app-expansion-item',
@@ -26,7 +25,7 @@ import { Board } from './../../../board';
 })
 export class ExpansionItemComponent implements OnInit {
 
-  constructor(private homePage: HomePageComponent, private fb: FormBuilder) { }
+  constructor(public homePage: HomePageComponent, private fb: FormBuilder) { }
 
 
   @Input() title ='title'
@@ -43,8 +42,6 @@ export class ExpansionItemComponent implements OnInit {
     
    }
    
-  
-    
   ngOnInit(): void {
 
     this.addBoardForm = this.fb.group({  
