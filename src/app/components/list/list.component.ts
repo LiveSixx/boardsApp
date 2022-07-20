@@ -27,39 +27,7 @@ import { Task } from './../../task';
   ]
 })
 export class ListComponent implements OnInit {
-  
-  todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
 
-  done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
-
-  drop(event: CdkDragDrop<string[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex,
-      );
-    }
-  }
-
-  onDrop(event: CdkDragDrop<Task[]>){
-    console.log(String(this.list.listId)+ ' this list id')
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex,
-      );
-      console.log(JSON.stringify(event.previousContainer.data) + ' event.previousContainer.data')
-    }
-    
-  }
   @Input() list!: List;
   formSatus = false;
   addTaskForm!: FormGroup;
@@ -67,7 +35,23 @@ export class ListComponent implements OnInit {
   task!: Task;
   tasks: Task[] = [];
   listTasks: Task[] = [];
-  listTasksTest: Task[] = [];
+
+  onDrop(event: CdkDragDrop<Task[]>){
+    if (event.previousContainer === event.container) {
+      moveItemInArray(
+        event.container.data, 
+        event.previousIndex, 
+        event.currentIndex);
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+    }
+    
+  }
 
   addTask(taskName: string){
     if(!taskName) { return; }
@@ -75,29 +59,14 @@ export class ListComponent implements OnInit {
       taskTitle:taskName,
       ulistId: this.list.listId,
       status: true,
-      taskId: this.listTasks.length + 2
-    }
-    let localData:any = localStorage.getItem('tasks')
-    if ( localData === null) {
-      this.tasks = []
-    }
-    else{
-      this.tasks = JSON.parse(localData) 
+      taskId: this.listTasks.length + 1
     }
     this.tasks.push(this.task)
     this.listTasks.push(this.task)
     localStorage.setItem('tasks',JSON.stringify(this.tasks))
   }
   getListTasks(){
-    if (localStorage.getItem("tasks") === null) { 
-      this.task = {
-        taskTitle:'FakeTask',
-        ulistId: this.list.listId,
-        status: true,
-        taskId: this.listTasks.length + 1
-      }
-      return 
-    }
+    if (localStorage.getItem("tasks") === null) { return }
     let localData:any = localStorage.getItem('tasks')
     this.tasks = JSON.parse(localData)
     this.listTasks = this.tasks.filter(x => x.ulistId === Number(this.list.listId)) 

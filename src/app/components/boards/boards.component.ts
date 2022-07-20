@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -11,7 +11,9 @@ import { List } from './../../list';
   templateUrl: './boards.component.html',
   styleUrls: ['./boards.component.scss']
 })
-export class BoardsComponent implements OnInit, AfterViewInit {
+export class BoardsComponent implements OnInit {
+  
+  constructor(private route: ActivatedRoute, private fb: FormBuilder, private homePage: HomePageComponent){ }
 
   boardName = '';
   addListBtn = false;
@@ -22,7 +24,7 @@ export class BoardsComponent implements OnInit, AfterViewInit {
   listsData: List[] = [];
   boardLists: List[] = [];
   list!: List;
-  boardListsArray: any[]=[]
+  boardListsIdsArray: any[]=[]
 
   board!: Board;
   selectedList = -1;
@@ -38,7 +40,7 @@ export class BoardsComponent implements OnInit, AfterViewInit {
     localStorage.setItem('lists',JSON.stringify(this.listsData))
     for (let i in this.boardLists) {
       let j = this.boardLists[i].listId 
-      this.boardListsArray.push(String(Number(j)))
+      this.boardListsIdsArray.push(String(Number(j)))
     }
   }
   getBoard(){
@@ -54,16 +56,10 @@ export class BoardsComponent implements OnInit, AfterViewInit {
     this.boardLists = this.listsData.filter(x => x.uBoardId === Number(id))  
     for (let i in this.boardLists) {
       let j = this.boardLists[i].listId 
-      this.boardListsArray.push(String(Number(j)))
+      this.boardListsIdsArray.push(String(Number(j)))
     }
   }
-
- 
-  constructor(private route: ActivatedRoute, private fb: FormBuilder, private homePage: HomePageComponent){ }
   
-  ngAfterViewInit(): void {
-
-  }
   addListBtnPressed(status: boolean) {
     this.addListBtn = status;
   }
@@ -76,7 +72,6 @@ export class BoardsComponent implements OnInit, AfterViewInit {
     }
     )
     this.boardName = this.route.snapshot.params['id'];
-    console.log(this.listsData)
 
   }
   clear(){

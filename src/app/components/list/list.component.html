@@ -28,7 +28,7 @@
                     <div cdkDropListGroup>
                         <div cdkDropList id="{{this.list.listId}}"
                         
-                        [cdkDropListConnectedTo]="this.boards.boardListsArray"
+                        [cdkDropListConnectedTo]="this.boards.boardListsIdsArray"
                         [cdkDropListData]="listTasks" 
                         (cdkDropListDropped)="onDrop($event)"> 
                             <app-task   [task]="task"

@@ -1,9 +1,6 @@
-import { Component, AfterViewInit, OnInit  } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { Board } from './../../board';
-
-import { Observable} from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-home-page',
@@ -15,7 +12,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 
-export class HomePageComponent implements AfterViewInit, OnInit {
+export class HomePageComponent implements OnInit {
   
   constructor() { }
   
@@ -24,10 +21,6 @@ export class HomePageComponent implements AfterViewInit, OnInit {
   expansionItem: any;
   smileState = "sentiment_satisfied"
 
-  
-  ngAfterViewInit(): void {
-    
-  }
 
   
   ngOnInit(): void {
@@ -53,11 +46,11 @@ export class HomePageComponent implements AfterViewInit, OnInit {
       boardId: this.boardsList.length + 1,    
     });
     localStorage.setItem('boards',JSON.stringify(this.boardsList))
-    console.log(this.boardsList + '  List on Add Board')
   }
 
   clearBords(){
     localStorage.clear()
+    alert('Local storge cleared')
   }
   
 }

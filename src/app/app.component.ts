@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router, } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { filter, map } from 'rxjs';
@@ -19,10 +19,6 @@ export class AppComponent {
     private router: Router, 
     private activePage: ActivatedRoute, 
     private homePageComp: HomePageComponent){}
-  
-  getPageTitle(){
-
-  }
   
   ngOnInit() {
     this.router.events

@@ -1,7 +1,8 @@
 <div class="expansion-header" [ngStyle]="{'cursor':formSatus ? 'default' : 'pointer' }">
     <div class="expansion-header-elements" (click)="formOpen(true)">
-        <mat-icon aria-hidden="true" aria-label="icon" class="material-icon md">
+        <a (click)="this.homePage.clearBords()"> <mat-icon aria-hidden="true" aria-label="icon" class="material-icon md">
             {{icon}}</mat-icon>
+        </a>
         <div class="expansion-title">
             {{title}}
         </div>
