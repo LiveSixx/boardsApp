@@ -41,18 +41,6 @@ export class BoardsComponent implements OnInit, AfterViewInit {
       this.boardListsArray.push(String(Number(j)))
     }
   }
-  
- // deleteBoard(){
- //   {
- //     if(!board) { return; }
- //     this.boardService.deleteBoard(board).subscribe(deletedBoard => {
- //       let boardIndex = this.boards.indexOf(board);
- //       if(boardIndex != -1) {
- //         this.boards.splice(boardIndex, 1);
- //       }
- //     });
- //   }
- // }
   getBoard(){
     const id = this.route.snapshot.paramMap.get('id');
     this.board = this.homePage.getBoard(Number(id)) as Board;

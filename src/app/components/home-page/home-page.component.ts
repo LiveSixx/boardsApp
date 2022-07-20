@@ -34,12 +34,6 @@ export class HomePageComponent implements AfterViewInit, OnInit {
     this.getBoards()
   
   }
-  
-  deleteBoard(board: Board){
-    console.log('button deleted')
-    if(!board) { return; }
-  
-   }
 
   getBoards(){
     if (localStorage.getItem("boards") === null) { return }

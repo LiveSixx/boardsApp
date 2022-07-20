@@ -69,26 +69,3 @@
     margin-right: 6px;
     padding: 12px;
 }
-
-
-.board-icon-delete{
-    visibility: hidden;
-    @include mat.elevation(4);
-    left: 55%;
-    top: 0%;
-    position: relative;
-    padding: 10px;
-    border-radius: 50%;
-    background-color: cs.$accent-color;
-}
-
-.home-section-board:hover .board-icon-delete {
-    transition-property: visibility;
-    transition-duration: 0.5s;
-    transition-delay: 0s;
-    visibility: visible;
-    
-    transition-property: left;
-    left: 48%;
-    
-}
