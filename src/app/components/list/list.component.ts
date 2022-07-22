@@ -35,6 +35,7 @@ export class ListComponent implements OnInit {
   task!: Task;
   tasks: Task[] = [];
   listTasks: Task[] = [];
+  isListEmpty:boolean = true;
   
 
   onDrop(event: CdkDragDrop<Task[]>){
@@ -70,7 +71,8 @@ export class ListComponent implements OnInit {
     if (localStorage.getItem("tasks") === null) { return }
     let localData:any = localStorage.getItem('tasks')
     this.tasks = JSON.parse(localData)
-    this.listTasks = this.tasks.filter(x => x.ulistId === Number(this.list.listId)) 
+    this.listTasks = this.tasks.filter(x => x.ulistId === Number(this.list.listId))
+    if (this.listTasks.length == 0){this.isListEmpty = true}
   }
   formOpen(status: boolean) {
     this.formSatus = status;

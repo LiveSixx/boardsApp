@@ -11,7 +11,7 @@ import { Task } from './../../task';
 export class TaskComponent implements OnInit{
 
   constructor() { }
-  
+  @Input() isListHasTasks!:boolean;
   
   @Input() task!: Task;
   @Input() list!:List;
@@ -20,6 +20,5 @@ export class TaskComponent implements OnInit{
   }
   toogleState(){
     this.task.status = !this.task.status
-    
   }
 }
