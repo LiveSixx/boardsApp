@@ -1,4 +1,4 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit, ViewChild  } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { Board } from './../../board';
 
@@ -14,15 +14,13 @@ import { Board } from './../../board';
 
 export class HomePageComponent implements OnInit {
   
-  constructor() { }
-  
+constructor() {}
+
   boardsList: Board[] = [];
   dataBoard!: Board;
   expansionItem: any;
   smileState = "sentiment_satisfied"
 
-
-  
   ngOnInit(): void {
     this.getBoards()
   
@@ -52,5 +50,6 @@ export class HomePageComponent implements OnInit {
     localStorage.clear()
     alert('Local storge cleared')
   }
+  
   
 }

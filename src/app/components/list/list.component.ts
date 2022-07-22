@@ -35,6 +35,7 @@ export class ListComponent implements OnInit {
   task!: Task;
   tasks: Task[] = [];
   listTasks: Task[] = [];
+  
 
   onDrop(event: CdkDragDrop<Task[]>){
     if (event.previousContainer === event.container) {

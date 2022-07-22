@@ -1,9 +1,10 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule,  Title } from '@angular/platform-browser';
+import { HostBinding, Input, NgModule, ViewChild } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatRippleModule, MAT_RIPPLE_GLOBAL_OPTIONS, RippleGlobalOptions} from '@angular/material/core';
 
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
@@ -15,7 +16,6 @@ import { ListComponent } from './components/list/list.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { TaskComponent } from './components/task/task.component';
 
-
 const routes: Routes = [
 
   {path: 'boards', component: HomePageComponent, data: {title: "Trello 2.0"}},
@@ -23,6 +23,14 @@ const routes: Routes = [
   {path: '**',redirectTo: 'boards'}
   ];
 
+  const globalRippleConfig: RippleGlobalOptions = {
+    disabled: false,
+    animation: {
+      enterDuration: 300,
+      exitDuration: 0
+    }
+  }
+  
 @NgModule({
   declarations: [
     ExpansionItemComponent,
@@ -35,6 +43,7 @@ const routes: Routes = [
     TaskComponent,
   ],
   imports: [
+    MatRippleModule,
     DragDropModule,
     ReactiveFormsModule,
     FormsModule,
@@ -43,7 +52,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     BrowserModule
   ],
-  providers: [],
+  providers: [{provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: globalRippleConfig}],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

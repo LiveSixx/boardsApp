@@ -1,5 +1,5 @@
 
-    <div [cdkDragDisabled]="!this.task.status" cdkDrag class="task-elements"[ngClass]="this.task.status ? 'task-container' : 'task-container-inactive'">
+    <div matRipple [matRippleColor]="color" [matRippleDisabled]="!this.task.status" [cdkDragDisabled]="!this.task.status" cdkDrag class="task-elements"[ngClass]="this.task.status ? 'task-container' : 'task-container-inactive'">
         <div class="task-title">{{task.taskTitle}}</div>
         <div class="task-icon-done" (click)="toogleState()">
             <mat-icon  class="task-icon-color" aria-hidden="done" aria-label="icon" class="material-icon ssm ">done</mat-icon>

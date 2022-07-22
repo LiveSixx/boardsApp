@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GlobalConstants } from 'src/app/common/global-constants';
 
 @Component({
   selector: 'app-home-button',
@@ -9,6 +10,8 @@ export class HomeButtonComponent implements OnInit {
 
   constructor() { }
   
+  color:string = GlobalConstants.ripplerColor;
+
   smileState = "sentiment_satisfied"
   ngOnInit(): void {
   }

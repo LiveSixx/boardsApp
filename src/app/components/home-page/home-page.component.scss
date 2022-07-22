@@ -52,6 +52,7 @@
   
   &:hover{
     background-color: cs.$secondary-color-hover;
+    border-left: 6px solid cs.$accent-color;
     transition: 0.2s;
     transform: scale(1.01);
     transform: translateX(5%);

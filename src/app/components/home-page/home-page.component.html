@@ -8,7 +8,6 @@
         <app-home-button routerLink=""></app-home-button>
         <div class="home-section-boards-container">
             <div class="home-section-board" *ngFor="let board of boardsList" routerLink="board/{{board.boardId}}/">
-                        
                         <div class="home-section-board-title">{{board.boardTitle}}</div>
                         <mat-icon style="padding-right: 10px" aria-hidden="true" aria-label="icon" class="material-icon md">chevron_right</mat-icon>
                         

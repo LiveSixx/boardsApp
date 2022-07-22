@@ -1,4 +1,4 @@
-<div class="expansion-header" [ngStyle]="{'cursor':formSatus ? 'default' : 'pointer' }">
+<div matRipple [matRippleColor]="color" class="expansion-header" [ngStyle]="{'cursor':formSatus ? 'default' : 'pointer' }">
     <div class="expansion-header-elements" (click)="formOpen(true)">
         <a (click)="this.homePage.clearBords()"> <mat-icon aria-hidden="true" aria-label="icon" class="material-icon md">
             {{icon}}</mat-icon>
@@ -17,7 +17,7 @@
             
             <input type="text" formControlName="item" name="borderName" aria-label="Название доски" placeholder="Название доски" [(ngModel)]="borderName" autocomplete="off">   
             <div class="home-section-form-buttons">
-            <button class="btn-save" [disabled]="addBoardForm.invalid" (click)="addBoard(borderName)" type="submit">Сохранить</button>
+            <button matRipple [matRippleColor]="color" class="btn-save" [disabled]="addBoardForm.invalid" (click)="addBoard(borderName)" type="submit">Сохранить</button>
             <button class="btn-cancel" (click)="clear()"  type="submit">Отмена</button>
             </div>
             

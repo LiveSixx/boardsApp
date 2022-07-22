@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HomePageComponent } from './../home-page/home-page.component';
 import { Board } from './../../board';
 import { List } from './../../list';
+import { GlobalConstants } from 'src/app/common/global-constants';
 
 @Component({
   selector: 'app-boards',
@@ -17,7 +18,8 @@ export class BoardsComponent implements OnInit {
 
   boardName = '';
   addListBtn = false;
-
+  color:string = GlobalConstants.ripplerColor;
+  
   addListForm!: FormGroup;
 
   listName!:string;

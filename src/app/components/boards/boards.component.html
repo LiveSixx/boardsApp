@@ -5,13 +5,13 @@
             <div class="board-header">
                 <div class="board-header-elements">
                     <mat-icon aria-hidden="true" aria-label="icon" class="material-icon md">
-                    description</mat-icon>
+                    grid_view</mat-icon>
                     <div class="board-title">
                         {{board.boardTitle}}
                     </div>
                 </div>
             </div>
-              <div *ngIf="addListBtn === false" class="board-section-board-addBtn" (click)="addListBtnPressed(true)">       
+              <div  matRipple [matRippleColor]="color"*ngIf="addListBtn === false" class="board-section-board-addBtn" (click)="addListBtnPressed(true)">       
                     <mat-icon aria-hidden="true" aria-label="icon" class="material-icon sm">add_circle</mat-icon>
                     <div class="board-section-board-addBtn-title">Добавить список</div>
                 </div>

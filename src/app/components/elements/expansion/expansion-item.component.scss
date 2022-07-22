@@ -20,12 +20,13 @@ div{
 }
 
 .close-button{
+    
     top: 25%;
     left: 85%;
     position: absolute;
     border-radius: 50%;
     background-color: transparent;
-    padding: 10px;
+    padding: 16px 16px 10px 16px;
     
     &:hover{
         cursor: pointer;
@@ -119,14 +120,15 @@ input[type=text]:focus {
   border-bottom: 3px solid cs.$accent-color;
 }
 .btn-save{
-    font-weight: 500;
+    font-family: "Roboto";
+    font-weight: 400;
     border-radius: 6px;
     padding: 10px 20px;
     background-color: cs.$primary-color;
     border: none;
     cursor: pointer;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 20px;
     text-align: center;
     letter-spacing: 0.4px;
     color: cs.$text-color;
@@ -176,8 +178,8 @@ input[type=text]:focus {
   }
 
   }
-  .material-icon:hover{
-    cursor:not-allowed;
+   .expansion-header-elements:hover .material-icon:hover{
+    cursor: not-allowed;
     transition: (.5s);
     color: cs.$accent-color-hover;
 

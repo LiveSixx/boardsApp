@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ViewChildren } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { state, trigger, style, transition, animate } from '@angular/animations';
 
 import { HomePageComponent } from './../../home-page/home-page.component';
+import { GlobalConstants } from 'src/app/common/global-constants';
 
 @Component({
   selector: 'app-expansion-item',
@@ -26,10 +27,10 @@ import { HomePageComponent } from './../../home-page/home-page.component';
 export class ExpansionItemComponent implements OnInit {
 
   constructor(public homePage: HomePageComponent, private fb: FormBuilder) { }
-
-
-  @Input() title ='title'
-  @Input() icon = 'add_circle'
+  
+  color:string = GlobalConstants.ripplerColor;
+  @Input() title ='title';
+  @Input() icon = 'add_circle';
   formSatus = false;
   
   borderName!:string;
@@ -58,4 +59,5 @@ export class ExpansionItemComponent implements OnInit {
     this.borderName = '';
   }
 
+  
 }
