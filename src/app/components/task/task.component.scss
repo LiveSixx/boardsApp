@@ -52,6 +52,13 @@
     word-wrap: break-word;
   }
 
+  .task-no-task-container{
+    padding: 2px;
+    clear: both;
+    content: "";
+    display: table;
+  }
+
   .cdk-drag-placeholder{
     opacity: 0;
   }

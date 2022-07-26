@@ -1,4 +1,4 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit, ViewChild  } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { Board } from './../../board';
 
@@ -13,34 +13,28 @@ import { Board } from './../../board';
 })
 
 export class HomePageComponent implements OnInit {
-  
-  constructor() { }
-  
+
   boardsList: Board[] = [];
-  dataBoard!: Board;
-  expansionItem: any;
   smileState = "sentiment_satisfied"
 
-
-  
   ngOnInit(): void {
     this.getBoards()
   
   }
 
-  getBoards(){
+  getBoards():void{
     if (localStorage.getItem("boards") === null) { return }
     let localData:any = localStorage.getItem('boards');
     this.boardsList = JSON.parse(localData)
   }
 
-  getBoard(id:Number){
+  getBoard(id:Number):Board{
     let localData:any = localStorage.getItem('boards');
     this.boardsList = JSON.parse(localData)
-    return this.boardsList.find(x => x.boardId === id);
+    return this.boardsList.find(x => x.boardId === id) as Board
   }
 
-  addBoard(name:string){
+  addBoard(name:string):void{
     this.boardsList.push({
       boardTitle:name,
       boardId: this.boardsList.length + 1,    
@@ -48,9 +42,10 @@ export class HomePageComponent implements OnInit {
     localStorage.setItem('boards',JSON.stringify(this.boardsList))
   }
 
-  clearBords(){
+  clearBords():void{
     localStorage.clear()
     alert('Local storge cleared')
   }
+  
   
 }

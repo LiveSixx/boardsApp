@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding, Input, NgModule } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router, } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { filter, map } from 'rxjs';
@@ -12,14 +12,16 @@ import { Board } from './board';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Trello 3.0';
+  title = 'Trello 2.0';
   
   constructor (
     private titleService: Title, 
     private router: Router, 
     private activePage: ActivatedRoute, 
     private homePageComp: HomePageComponent){}
-  
+
+   
+    
   ngOnInit() {
     this.router.events
       .pipe(

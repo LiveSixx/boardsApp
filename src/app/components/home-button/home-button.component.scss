@@ -7,7 +7,7 @@
     position: relative;
     @include mat.elevation(6);
     background-color: cs.$primary-color;
-    padding: 40px;
+    padding: 40px 40px 35px 40px;
     border-radius: 50%;
     &:hover{
         cursor: pointer;

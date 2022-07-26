@@ -31,8 +31,10 @@
                         [cdkDropListConnectedTo]="this.boards.boardListsIdsArray"
                         [cdkDropListData]="listTasks" 
                         (cdkDropListDropped)="onDrop($event)"> 
-                            <app-task   [task]="task"
-                             *ngFor="let task of listTasks; let i=index"></app-task>      
+                            <app-task [task]="task"
+                             *ngFor="let task of listTasks; let i=index"></app-task> 
+                             
+                             <app-task *ngIf='isListEmpty' [isListHasTasks]="isListEmpty"></app-task>        
                         </div>
                     </div> 
                 </div>
