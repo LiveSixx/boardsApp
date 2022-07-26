@@ -1,10 +1,11 @@
-import { HostBinding, Input, NgModule, ViewChild } from '@angular/core';
+import { NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatRippleModule, MAT_RIPPLE_GLOBAL_OPTIONS, RippleGlobalOptions} from '@angular/material/core';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
@@ -43,6 +44,7 @@ const routes: Routes = [
     TaskComponent,
   ],
   imports: [
+    MatTooltipModule,
     MatRippleModule,
     DragDropModule,
     ReactiveFormsModule,

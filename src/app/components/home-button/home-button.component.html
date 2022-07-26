@@ -1,4 +1,4 @@
-<div matRipple [matRippleColor]="color" class="home-section-smile"  
+<div  matTooltip="Вернуться на главную страницу" matTooltipPosition="below" matTooltipClass="tooltip" matRipple [matRippleColor]="color" class="home-section-smile"  
         (mouseenter)="smileState = 'sentiment_neutral'" 
         (mouseleave)="smileState = 'sentiment_satisfied'">
         <span class="material-icons material-icon lr">{{smileState}}</span>
