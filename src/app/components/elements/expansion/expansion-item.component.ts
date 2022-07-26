@@ -36,11 +36,10 @@ export class ExpansionItemComponent implements OnInit {
   borderName!:string;
   addBoardForm!: FormGroup;
 
-   addBoard(name: string) {
+   addBoard(name: string) :void{
     this.borderName = '';
     name = name.trim();
-    this.homePage.addBoard(name)
-    
+    this.homePage.addBoard(name) 
    }
    
   ngOnInit(): void {
@@ -51,11 +50,11 @@ export class ExpansionItemComponent implements OnInit {
   )
   }
 
-  formOpen(status: boolean) {
+  formOpen(status: boolean):void {
     this.formSatus = status;
   }
 
-  clear(){
+  clear():void{
     this.borderName = '';
   }
 

@@ -19,19 +19,16 @@ export class BoardsComponent implements OnInit {
   boardName = '';
   addListBtn = false;
   color:string = GlobalConstants.ripplerColor;
-  
   addListForm!: FormGroup;
-
   listName!:string;
   listsData: List[] = [];
   boardLists: List[] = [];
   list!: List;
   boardListsIdsArray: any[]=[]
-
   board!: Board;
   selectedList = -1;
   
-  addList(){
+  addList():void{
     this.list = {
       listTitle:this.addListForm.value.listItem,
       listId: this.listsData.length + 1, 
@@ -40,29 +37,31 @@ export class BoardsComponent implements OnInit {
     this.listsData.push(this.list)
     this.boardLists.push(this.list)
     localStorage.setItem('lists',JSON.stringify(this.listsData))
-    for (let i in this.boardLists) {
-      let j = this.boardLists[i].listId 
-      this.boardListsIdsArray.push(String(Number(j)))
-    }
+    this.getArrayOfListsIds(this.boardLists)
+   
   }
-  getBoard(){
+  getBoard():void{
     const id = this.route.snapshot.paramMap.get('id');
     this.board = this.homePage.getBoard(Number(id)) as Board;
   }
 
-  getBoardLists(){
+  getArrayOfListsIds(listsOfBorad:List[]):void{
+    for (let i in listsOfBorad) {
+      let j = listsOfBorad[i].listId 
+      this.boardListsIdsArray.push(String(Number(j)))
+    }
+  }
+
+  getBoardLists():void{
     if (localStorage.getItem("lists") === null) { return }
     const id = this.route.snapshot.paramMap.get('id');
     let localData:any = localStorage.getItem('lists')
     this.listsData = JSON.parse(localData)
     this.boardLists = this.listsData.filter(x => x.uBoardId === Number(id))  
-    for (let i in this.boardLists) {
-      let j = this.boardLists[i].listId 
-      this.boardListsIdsArray.push(String(Number(j)))
-    }
+    this.getArrayOfListsIds(this.boardLists)
   }
   
-  addListBtnPressed(status: boolean) {
+  addListBtnPressed(status: boolean) :void{
     this.addListBtn = status;
   }
 
@@ -76,7 +75,7 @@ export class BoardsComponent implements OnInit {
     this.boardName = this.route.snapshot.params['id'];
 
   }
-  clear(){
+  clear():void{
     this.listName = '';
   }
 

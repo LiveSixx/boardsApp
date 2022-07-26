@@ -38,7 +38,7 @@ export class ListComponent implements OnInit {
   isListEmpty:boolean = true;
   
 
-  onDrop(event: CdkDragDrop<Task[]>){
+  onDrop(event: CdkDragDrop<Task[]>):void{
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data, 
@@ -55,7 +55,7 @@ export class ListComponent implements OnInit {
     
   }
 
-  addTask(taskName: string){
+  addTask(taskName: string):void{
     if(!taskName) { return; }
     this.task = {
       taskTitle:taskName,
@@ -67,14 +67,14 @@ export class ListComponent implements OnInit {
     this.listTasks.push(this.task)
     localStorage.setItem('tasks',JSON.stringify(this.tasks))
   }
-  getListTasks(){
+  getListTasks():void{
     if (localStorage.getItem("tasks") === null) { return }
     let localData:any = localStorage.getItem('tasks')
     this.tasks = JSON.parse(localData)
     this.listTasks = this.tasks.filter(x => x.ulistId === Number(this.list.listId))
     if (this.listTasks.length == 0){this.isListEmpty = true}
   }
-  formOpen(status: boolean) {
+  formOpen(status: boolean) :void{
     this.formSatus = status;
   }
   constructor(private fb: FormBuilder, public boards:BoardsComponent) { }
@@ -87,7 +87,7 @@ export class ListComponent implements OnInit {
     
   }
 
-  clear(){
+  clear():void{
     this.taskName = '';
   }
 

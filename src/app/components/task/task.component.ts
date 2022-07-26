@@ -10,7 +10,6 @@ import { Task } from './../../task';
 })
 export class TaskComponent implements OnInit{
 
-  constructor() { }
   @Input() isListHasTasks!:boolean;
   
   @Input() task!: Task;
@@ -18,7 +17,7 @@ export class TaskComponent implements OnInit{
   color:string = GlobalConstants.ripplerColor;
   ngOnInit(): void {
   }
-  toogleState(){
+  toogleState():void{
     this.task.status = !this.task.status
   }
 }

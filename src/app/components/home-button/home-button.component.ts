@@ -6,14 +6,10 @@ import { GlobalConstants } from 'src/app/common/global-constants';
   templateUrl: './home-button.component.html',
   styleUrls: ['./home-button.component.scss']
 })
-export class HomeButtonComponent implements OnInit {
-
-  constructor() { }
+export class HomeButtonComponent {
   
   color:string = GlobalConstants.ripplerColor;
 
   smileState = "sentiment_satisfied"
-  ngOnInit(): void {
-  }
 
 }
