@@ -2,41 +2,32 @@
 @use './../../../styles.scss' as cs;
 @use 'sass:map';
 
-*{
-    font-display: block;
-}
-
-.list-section-wrapper{
+.list-section-wrapper {
     font-family: "Roboto";
     display: flex;
     flex-direction: column;
-
 }
 
-.list-section-wrapper app-list{
+.list-section-wrapper app-list {
     @include mat.elevation(4);
     overflow: hidden;
     margin: 8px;
 }
 
-
-
-.active-list{
+.active-list {
     transition: (0.2s);
     @include mat.elevation(8);
     border-bottom: 5px solid cs.$accent-color;
 }
 
-
-
-.board-section-wrapper{
+.board-section-wrapper {
     padding-right: 10%;
     overflow: hidden;
     position: relative;
     height: 100%;
 }
 
-.board-section-container{
+.board-section-container {
     align-items:baseline;
     justify-content: space-between;
     min-height: 500px;
@@ -45,7 +36,7 @@
     margin: 36px;
 }
 
-.board-header{
+.board-header {
     @include mat.elevation(4);
     position: relative;
     padding: 20px 24px;
@@ -53,13 +44,13 @@
     background-color: cs.$primary-color;
 }
 
-.board-header-elements{
+.board-header-elements {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.board-title{
+.board-title {
     padding: 18px 0;
     white-space: nowrap;
     word-break: none;
@@ -69,19 +60,18 @@
     width: 400px;
     font-weight: 400;
     font-size: 48px;
-    color:cs.$text-color;
+    color: cs.$text-color;
 }
 
-.board-section-data{
+.board-section-data {
     display: flex;
     flex-direction: column;
 }
 
-.board-section-board-addBtn{
+.board-section-board-addBtn {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-
     max-width: 50%;
     font-family: "Roboto";
     align-items: center;
@@ -100,24 +90,22 @@
     color: cs.$text-color;
     @include mat.elevation(3);
     
-    &:hover{
-    background-color: cs.$secondary-color-hover;
-    transition: 0.2s;
-    @include mat.elevation(6);
+    &:hover {
+        background-color: cs.$secondary-color-hover;
+        transition: 0.2s;
+        @include mat.elevation(6);
     }
-
 }
 
-.board-section-form-addList{
+.board-section-form-addList {
     margin-left: 3%;
 }
 
 .close-button span {
-    margin-top:16%;
-    
+    margin-top: 16%;   
 }
 
-.close-button{
+.close-button {
     margin-left: 5%;
     border-radius: 50%;
     background-color: transparent;
@@ -131,7 +119,7 @@
     }
 }
 
-.board-section-board-addBtn-title{
+.board-section-board-addBtn-title {
     margin-left: 3%;
     overflow-wrap: none;
     font-weight: 400;
@@ -139,14 +127,13 @@
     color:cs.$text-color;
 }
 
-.board-section-form-container{
+.board-section-form-container {
     letter-spacing: 0.4px;
     align-items: center;
     @include mat.elevation(3);
     padding: 2px 3%;
     border-radius: 6px;
     background-color: cs.$secondary-color;
-
     margin: 34px 0px;
     display: flex;
     flex-direction: row;
@@ -165,9 +152,9 @@ input[type=text], select {
     border: none;
     border-radius: 6px;
     box-sizing: border-box;
-  }
+}
 
-  input[type=text]::placeholder {
+input[type=text]::placeholder {
     font-size: 26px;
     font-weight: 100;
     opacity: .8;

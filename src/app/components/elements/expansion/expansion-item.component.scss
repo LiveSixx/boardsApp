@@ -2,95 +2,95 @@
 @use './../../../../styles.scss' as cs;
 @use 'sass:map';
 
-div{
+div {
     font-family: 'Roboto'
 }
-.expansion-header{
-    @include mat.elevation(4);
-    position: relative;
-    padding: 32px;
-    border-radius: 14px;
-    background-color: cs.$primary-color;
+.expansion-header {
+  @include mat.elevation(4);
+  position: relative;
+  padding: 32px;
+  border-radius: 14px;
+  background-color: cs.$primary-color;
 }
 
-.expansion-header-elements{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+.expansion-header-elements {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-.close-button{
-    
-    top: 25%;
-    left: 85%;
-    position: absolute;
+.close-button {
+  top: 25%;
+  left: 85%;
+  position: absolute;
+  border-radius: 50%;
+  background-color: transparent;
+  padding: 16px 16px 10px 16px;
+  
+  &:hover {
+    cursor: pointer;
+    transition: 0.2s;
+    background-color: rgba(0, 111, 167, 0.2);
     border-radius: 50%;
-    background-color: transparent;
-    padding: 16px 16px 10px 16px;
-    
-    &:hover{
-        cursor: pointer;
-        transition: 0.2s;
-        background-color: rgba(0, 111, 167, 0.2);
-        border-radius: 50%;
-    }
-}
-.expansion-title{
-    margin-left: 6%;
-    width: 400px;
-    overflow-wrap: break-word;
-    font-weight: 400;
-    font-size: 48px;
-    color:cs.$text-color;
+  }
 }
 
-.expansion-body{
-    padding: 30px;
-    max-width: 400px;
-    background-color: cs.$secondary-color;
+.expansion-title {
+  margin-left: 6%;
+  width: 400px;
+  overflow-wrap: break-word;
+  font-weight: 400;
+  font-size: 48px;
+  color:cs.$text-color;
+}
 
+.expansion-body {
+  padding: 30px;
+  max-width: 400px;
+  background-color: cs.$secondary-color;
 }
 
 .btn-contacts {
-    display: inline-block;
-    background-color: cs.$primary-color;
-    border: none;
-    padding: 7px 35px;
-    margin: 5px;
-    border-top: #e6e6e6;
-    border-radius: 16px;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 24px;
-    font-weight: 200;
-    text-align: center;
-    letter-spacing: 0.5px;
-    color: #fff;
-    &:hover{
+  display: inline-block;
+  background-color: cs.$primary-color;
+  border: none;
+  padding: 7px 35px;
+  margin: 5px;
+  border-top: #e6e6e6;
+  border-radius: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: 200;
+  text-align: center;
+  letter-spacing: 0.5px;
+  color: #fff;
   
-      color: cs.$primary-color-hover;
-      transition: 0.2s;
-        transform: scale(1.05);
-        @include mat.elevation(4);
-    }
-  
+  &:hover {
+    color: cs.$primary-color-hover;
+    transition: 0.2s;
+    transform: scale(1.05);
+    @include mat.elevation(4);
   }
 
-.home-section-form-container{
-    font-size: 16px;
-    background-color: cs.$secondary-color;
-    border-radius: 16px;
-    display: flex;
-    flex-direction: column;
-    padding: 16px 8px 8px 8px;
 }
 
-.home-section-form-buttons{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 22px;
+.home-section-form-container {
+  font-size: 16px;
+  background-color: cs.$secondary-color;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 8px 8px 8px;
 }
+
+.home-section-form-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 22px;
+}
+
 input[type=text], select {
   font-family: 'Roboto';
   font-size: 26px;
@@ -119,68 +119,70 @@ input[type=text]:focus {
   outline: none;
   border-bottom: 3px solid cs.$accent-color;
 }
-.btn-save{
-    font-family: "Roboto";
-    font-weight: 400;
-    border-radius: 6px;
-    padding: 10px 20px;
-    background-color: cs.$primary-color;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 20px;
-    text-align: center;
-    letter-spacing: 0.4px;
-    color: cs.$text-color;
-    @include mat.elevation(2);
+
+.btn-save {
+  font-family: "Roboto";
+  font-weight: 400;
+  border-radius: 6px;
+  padding: 10px 20px;
+  background-color: cs.$primary-color;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 20px;
+  text-align: center;
+  letter-spacing: 0.4px;
+  color: cs.$text-color;
+  @include mat.elevation(2);
   
-  &:hover:not([disabled]){
+  &:hover:not([disabled]) {
     background-color: cs.$primary-color-hover;
     transition: 0.2s;
     transform: scale(1.05);
     @include mat.elevation(4);
   }
-  &:active:not([disabled]){
+
+  &:active:not([disabled]) {
     transition: 0.2s;
     color: cs.$accent-color;
   }
-  &:disabled{
+
+  &:disabled {
     @include mat.elevation(0);
     cursor: default;
     background-color: cs.$inactive-color;
-
   }
-  }
+}
 
-  .btn-cancel{
-    font-family: 'Roboto';
-    font-weight: 500;
-    border-radius: 6px;
-    padding: 0px ;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 18px;
-    text-align: center;
-    letter-spacing: 0.4px;
-    color: cs.$inactive-color;
-    text-transform: uppercase;
-  
-  &:hover{
+.btn-cancel {
+  font-family: 'Roboto';
+  font-weight: 500;
+  border-radius: 6px;
+  padding: 0px ;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 18px;
+  text-align: center;
+  letter-spacing: 0.4px;
+  color: cs.$inactive-color;
+  text-transform: uppercase;
+
+  &:hover {
     opacity: 0.5;
     color: cs.$accent-color;
     transition: 0.2s;
   }
-  &:active([disabled]){
+
+  &:active([disabled]) {
     transition: 0.2s;
     color: cs.$secondary-color;
   }
-
-  }
-   .expansion-header-elements:hover .material-icon:hover{
-    cursor: not-allowed;
-    transition: (.5s);
-    color: cs.$accent-color-hover;
-
-  }
+}
+  
+.expansion-header-elements:hover .material-icon:hover {
+  cursor: not-allowed;
+  transition: (.5s);
+  color: cs.$accent-color-hover;
+}

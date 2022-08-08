@@ -1,8 +1,6 @@
-import { Component, OnInit, Input, ViewChild, ViewChildren } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { state, trigger, style, transition, animate } from '@angular/animations';
-
-import { HomePageComponent } from './../../home-page/home-page.component';
 import { GlobalConstants } from 'src/app/common/global-constants';
 
 @Component({
@@ -11,6 +9,7 @@ import { GlobalConstants } from 'src/app/common/global-constants';
   styleUrls: ['./expansion-item.component.scss'],
   animations: [
     trigger('smoothClose', [
+
       state('initial', style({
         height: '0',
         overflow: 'hidden',
@@ -26,37 +25,41 @@ import { GlobalConstants } from 'src/app/common/global-constants';
 })
 export class ExpansionItemComponent implements OnInit {
 
-  constructor(public homePage: HomePageComponent, private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) {}
   
-  color:string = GlobalConstants.ripplerColor;
-  @Input() title ='title';
+  @Input() title = 'title';
   @Input() icon = 'add_circle';
+
+  @Output() onBoardAdd = new EventEmitter<string>();
+
+  color: string = GlobalConstants.ripplerColor;
   formSatus = false;
-  
-  borderName!:string;
   addBoardForm!: FormGroup;
 
-   addBoard(name: string) :void{
-    this.borderName = '';
-    name = name.trim();
-    this.homePage.addBoard(name) 
-   }
-   
-  ngOnInit(): void {
+   addBoard(): void {
+    const boardName: string = this.addBoardForm.get('item')?.value.trim();
+    if (!boardName) return;
 
+    this.onBoardAdd.emit(boardName);
+    this.clear();
+   }
+
+  ngOnInit(): void {
     this.addBoardForm = this.fb.group({  
     item:['',Validators.required]
-  }
-  )
+    });
   }
 
-  formOpen(status: boolean):void {
+  toggleForm(status: boolean): void {
     this.formSatus = status;
   }
 
-  clear():void{
-    this.borderName = '';
+  clear(): void {
+    this.addBoardForm.get('item')?.setValue('');
   }
 
-  
+  clearLocalStorage(): void {
+    localStorage.clear();
+    alert('Локальное хранилище очищено');
+  }
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
 import { HomePageComponent } from './../home-page/home-page.component';
 import { Board } from './../../board';
 import { List } from './../../list';
@@ -12,11 +11,11 @@ import { GlobalConstants } from 'src/app/common/global-constants';
   templateUrl: './boards.component.html',
   styleUrls: ['./boards.component.scss']
 })
+
 export class BoardsComponent implements OnInit {
   
-  constructor(private route: ActivatedRoute, private fb: FormBuilder, private homePage: HomePageComponent){ }
+  constructor(private route: ActivatedRoute, private fb: FormBuilder, private homePage: HomePageComponent) {}
 
-  boardName = '';
   addListBtn = false;
   color:string = GlobalConstants.ripplerColor;
   addListForm!: FormGroup;
@@ -24,59 +23,63 @@ export class BoardsComponent implements OnInit {
   listsData: List[] = [];
   boardLists: List[] = [];
   list!: List;
-  boardListsIdsArray: any[]=[]
+  boardListsIdsArray: any[] = [];
   board!: Board;
   selectedList = -1;
+
+  ngOnInit(): void {
+    this.getBoard();
+    this.getBoardLists();
+    this.addListForm = this.fb.group({
+      listItem:['',Validators.required]
+    });
+  }
   
-  addList():void{
+  addList(): void {
+    const listName = this.addListForm.get('listItem')?.value;
+
+    if (!listName) return;
+
     this.list = {
-      listTitle:this.addListForm.value.listItem,
+      listTitle:listName,
       listId: this.listsData.length + 1, 
       uBoardId: Number(this.route.snapshot.paramMap.get('id')),
-    } as List
-    this.listsData.push(this.list)
-    this.boardLists.push(this.list)
-    localStorage.setItem('lists',JSON.stringify(this.listsData))
-    this.getArrayOfListsIds(this.boardLists)
-   
-  }
-  getBoard():void{
-    const id = this.route.snapshot.paramMap.get('id');
-    this.board = this.homePage.getBoard(Number(id)) as Board;
-  }
+    } as List;
 
-  getArrayOfListsIds(listsOfBorad:List[]):void{
-    for (let i in listsOfBorad) {
-      let j = listsOfBorad[i].listId 
-      this.boardListsIdsArray.push(String(Number(j)))
-    }
-  }
-
-  getBoardLists():void{
-    if (localStorage.getItem("lists") === null) { return }
-    const id = this.route.snapshot.paramMap.get('id');
-    let localData:any = localStorage.getItem('lists')
-    this.listsData = JSON.parse(localData)
-    this.boardLists = this.listsData.filter(x => x.uBoardId === Number(id))  
-    this.getArrayOfListsIds(this.boardLists)
+    this.listsData.push(this.list);
+    this.boardLists.push(this.list);
+    localStorage.setItem('lists', JSON.stringify(this.listsData));
+    this.getArrayOfListsIds(this.boardLists);
+    this.clear();
   }
   
-  addListBtnPressed(status: boolean) :void{
+  getBoard(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.board = this.homePage.getBoard( Number(id) ) as Board;
+  }
+
+  getArrayOfListsIds(listsOfBorad:List[]): void {
+    for (let i in listsOfBorad) {
+      let j = listsOfBorad[i].listId;
+      this.boardListsIdsArray.push( String(Number(j)) )
+    };
+  }
+
+  getBoardLists(): void {
+    if (localStorage.getItem("lists") === null) return;
+    
+    const id = this.route.snapshot.paramMap.get('id');
+    let localData:any = localStorage.getItem('lists');
+    this.listsData = JSON.parse(localData);
+    this.boardLists = this.listsData.filter( x => x.uBoardId === Number(id) );
+    this.getArrayOfListsIds(this.boardLists);
+  }
+  
+  addListBtnPressed(status: boolean): void {
     this.addListBtn = status;
   }
 
-  ngOnInit(): void {
-    this.getBoard()
-    this.getBoardLists()
-    this.addListForm = this.fb.group({
-      listItem:['',Validators.required]
-    }
-    )
-    this.boardName = this.route.snapshot.params['id'];
-
+  clear(): void {
+    this.addListForm.get('listItem')?.setValue('');
   }
-  clear():void{
-    this.listName = '';
-  }
-
 }
