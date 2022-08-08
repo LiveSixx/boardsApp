@@ -2,109 +2,55 @@
 @use './../../../styles.scss' as cs;
 @use 'sass:map';
 
-.task-container{
-    @include mat.elevation(3);
-    cursor: pointer;
-    border-radius: 4px;
-    background-color: cs.$accent-color;
-    margin: 12px 8px;
-  }
+.task-container {
+  @include mat.elevation(3);
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: cs.$accent-color;
+  margin: 12px 8px;
+}
   
-  .task-container:hover{
-    @include mat.elevation(0);
-    transition: (0.2s);
-    background-color: cs.$accent-color-active;
-  }
-  
-  .task-elements{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    
-  }
+.task-container:hover {
+  @include mat.elevation(0);
+  transition: (0.2s);
+  background-color: cs.$accent-color-active;
+}
 
-  .task-container-inactive{
-    transition: (0.5s);
-    cursor: pointer;
-    border-radius: 4px;
-    background-color: cs.$accent-color;
-    margin: 12px 8px;
-    text-decoration: line-through;
-    text-decoration-color: cs.$inactive-color; 
-    background-color: cs.$inactive-color;
-    opacity: 0.8;
-    
-  }
+.task-elements {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 
-  .task-icon-done{
-    padding-top: 6px;
-    padding-right: 6px;
-  }
-  
-  .task-title{
-    //overflow: hidden;
-    //max-height: 38px;
-    min-width: 90%;
-    font-size: 16px;
-    text-align: center;
-    color: cs.$text-color;
-    padding: 8px;
-    word-wrap: break-word;
-  }
+.task-container-inactive {
+  transition: (0.5s);
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: cs.$accent-color;
+  margin: 12px 8px;
+  text-decoration: line-through;
+  text-decoration-color: cs.$inactive-color; 
+  background-color: cs.$inactive-color;
+  opacity: 0.8;
+}
 
-  .task-no-task-container{
-    padding: 2px;
-    clear: both;
-    content: "";
-    display: table;
-  }
+.task-icon-done {
+  padding-top: 6px;
+  padding-right: 6px;
+}
 
-  .cdk-drag-placeholder{
-    opacity: 0;
-  }
-  
-  .cdk-drag-preview{
-    padding-bottom: 40px;
-    padding-top: 10px;
-    box-sizing: border-box;
-    border-radius: 8px;
-    @include mat.elevation(6);
-  }
+.task-title {
+  min-width: 90%;
+  font-size: 16px;
+  text-align: center;
+  color: cs.$text-color;
+  padding: 8px;
+  word-wrap: break-word;
+}
 
-  .cdk-drag-preview .task-title{
-    font-size: 24px;
-  }
-
-
-  .example-container {
-    width: 400px;
-    max-width: 100%;
-    margin: 0 25px 25px 0;
-    display: inline-block;
-    vertical-align: top;
-  }
-  
-  
-  
-  .example-list {
-    border: solid 1px #ccc;
-    min-height: 60px;
-    background: white;
-    border-radius: 4px;
-    overflow: hidden;
-    display: block;
-  }
-  
-  .example-box {
-    padding: 20px 10px;
-    border-bottom: solid 1px #ccc;
-    color: rgba(0, 0, 0, 0.87);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    box-sizing: border-box;
-    cursor: move;
-    background: white;
-    font-size: 14px;
-  }
+.task-no-task-container {
+  padding: 2px;
+  clear: both;
+  content: "";
+  display: table;
+}

@@ -2,78 +2,75 @@
 @use './../../../styles.scss' as cs;
 @use 'sass:map';
 
-.list-section-form-container{
+.list-section-form-container {
   background-color: cs.$secondary-color;
-  //border-radius: 0 0 8px 8px ;
   padding: 8px;
 }
-.expansion-list-header{
+.expansion-list-header {
+  cursor: pointer;
+  @include mat.elevation(4);
+  position: relative;
+  padding:  10px;
+  border-radius: 6px;
+  background-color: cs.$secondary-color;
+}
+
+.expasion-list-expanded {
+  @include mat.elevation(0);
+  border-radius: 6px 6px 0 0 ;
+}
+
+.expansion-list-header-elements {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.expansion-list-title {
+  padding: 10px ;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  letter-spacing: 0.4px;
+  text-decoration: none;
+  max-width: 80%;
+  width: 400px;
+  font-weight: 400;
+  font-size: 24px;
+  color: cs.$text-color;
+}
+
+.list-close-button {
+  top: 25%;
+  left: 85%;
+  position: absolute;
+  border-radius: 50%;
+  background-color: transparent;
+  padding: 10px 10px 5px 10px;
+  
+  &:hover {
     cursor: pointer;
-    @include mat.elevation(4);
-    position: relative;
-    padding:  10px;
-    border-radius: 6px;
-    background-color: cs.$secondary-color;
-}
-
-.expasion-list-expanded{
-    @include mat.elevation(0);
-    border-radius: 6px 6px 0 0 ;
-    
-}
-
-.expansion-list-header-elements{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.expansion-list-title{
-    padding: 10px ;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    
-    letter-spacing: 0.4px;
-    text-decoration: none;
-    max-width: 80%;
-    width: 400px;
-    font-weight: 400;
-    font-size: 24px;
-    color:cs.$text-color;
-}
-
-.list-close-button{
-    top: 25%;
-    left: 85%;
-    position: absolute;
+    transition: 0.2s;
+    background-color: rgba(0, 111, 167, 0.2);
     border-radius: 50%;
-    background-color: transparent;
-    padding: 10px 10px 5px 10px;
-    
-    &:hover{
-        cursor: pointer;
-        transition: 0.2s;
-        background-color: rgba(0, 111, 167, 0.2);
-        border-radius: 50%;
-    }
+  }
 }
 
 input[type=text], select {
-    font-family: "Roboto";
-    font-size: 26px;
-    font-weight: 100;
-    color: cs.$text-color;
-    width: 100%;
-    padding: 4px 14px;
-    margin: 8px 0;
-    display: inline-block;
-    background-color: cs.$form-color;
-    border: none;
-    border-radius: 6px;
-    border-bottom: 3px solid cs.$inactive-color;
-    box-sizing: border-box;
-  }
+  font-family: "Roboto";
+  font-size: 26px;
+  font-weight: 100;
+  color: cs.$text-color;
+  width: 100%;
+  padding: 4px 14px;
+  margin: 8px 0;
+  display: inline-block;
+  background-color: cs.$form-color;
+  border: none;
+  border-radius: 6px;
+  border-bottom: 3px solid cs.$inactive-color;
+  box-sizing: border-box;
+}
   
 input[type=text]::placeholder {
   font-size: 26px;

@@ -3,7 +3,6 @@ import { ActivatedRoute, NavigationEnd, Router, } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { filter, map } from 'rxjs';
 import { HomePageComponent } from './components/home-page/home-page.component';
-
 import { Board } from './board';
 
 @Component({
@@ -22,7 +21,7 @@ export class AppComponent {
 
    
     
-  ngOnInit() {
+  ngOnInit(): void {
     this.router.events
       .pipe(
         filter((event) => event instanceof NavigationEnd),
@@ -36,10 +35,11 @@ export class AppComponent {
           if (this.activePage.snapshot.data['title']) {
             routeTitle = this.activePage!.snapshot.data['title'];
           }
-          if (this.activePage.snapshot.data['boardTitle']){
-            activeBoard = this.homePageComp.getBoard(Number(this.activePage.snapshot.paramMap.get('id'))) as Board
-            routeTitle = String('Доска - '+ activeBoard.boardTitle)
+          if (this.activePage.snapshot.data['boardTitle']) {
+            activeBoard = this.homePageComp.getBoard(Number(this.activePage.snapshot.paramMap.get('id'))) as Board;
+            routeTitle = String('Доска - '+ activeBoard.boardTitle);
           }
+          
           return routeTitle;
         })
       )

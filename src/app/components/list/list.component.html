@@ -4,41 +4,34 @@
             <div class="expansion-list-header-elements" (click)="formOpen(true)">
                 <mat-icon aria-hidden="true" aria-label="icon" class="material-icon sm">
                     format_list_numbered</mat-icon>
-                <div class="expansion-list-title">
-                    {{list.listTitle}}
-                </div>
+                <div class="expansion-list-title">{{list.listTitle}}</div>
             </div>
             <div *ngIf="formStatus === true" class="list-close-button" (click)="formOpen(false)">
                 <mat-icon  aria-hidden="close" aria-label="icon" class="material-icon sm ">close</mat-icon>
             </div>
         </div>
-            <div [@smoothClose]="!formStatus? 'initial': 'final'">   
-                <div class="list-section-form-container">
-                    <form class="list-section-form-container" [formGroup]="addTaskForm">
-            
-                        <input (keyup.enter)="addTask()" 
-                        type="text" 
-                        formControlName="item" 
-                        name="borderName" 
-                        aria-label="Текст элемента" 
-                        placeholder="Текст элемента" 
-                        autocomplete="off">     
-                    </form>
-                    <div cdkDropListGroup>
-                        <div cdkDropList id="{{this.list.listId}}"
-                        
+        <div [@smoothClose]="!formStatus? 'initial': 'final'">   
+            <div class="list-section-form-container">
+                <form class="list-section-form-container" [formGroup]="addTaskForm">
+                    <input (keyup.enter)="addTask()" 
+                    type="text" 
+                    formControlName="item" 
+                    name="borderName" 
+                    aria-label="Текст элемента" 
+                    placeholder="Текст элемента" 
+                    autocomplete="off">     
+                </form>
+                <div cdkDropListGroup>
+                    <div cdkDropList id="{{this.list.listId}}"
                         [cdkDropListConnectedTo]="this.boards.boardListsIdsArray"
                         [cdkDropListData]="listTasks" 
                         (cdkDropListDropped)="onDrop($event)"> 
-                            <app-task [task]="task"
-                             *ngFor="let task of listTasks; let i=index"></app-task> 
-                             
-                             <app-task *ngIf='isListEmpty' [isListHasTasks]="isListEmpty"></app-task>        
-                        </div>
-                    </div> 
-                </div>
+                        <app-task [task]="task" *ngFor="let task of listTasks; let i=index"></app-task> 
+                        <app-task *ngIf='isListEmpty' [isListHasTasks]="isListEmpty"></app-task>        
+                    </div>
+                </div> 
             </div>
-            
+        </div>  
     </div>
 </div>
   

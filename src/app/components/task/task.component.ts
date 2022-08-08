@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { GlobalConstants } from 'src/app/common/global-constants';
 import { List } from 'src/app/list';
 import { Task } from './../../task';
@@ -8,16 +8,15 @@ import { Task } from './../../task';
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.scss']
 })
-export class TaskComponent implements OnInit{
+export class TaskComponent {
 
-  @Input() isListHasTasks!:boolean;
-  
+  @Input() isListHasTasks!: boolean;
   @Input() task!: Task;
-  @Input() list!:List;
+  @Input() list!: List;
+  
   color:string = GlobalConstants.ripplerColor;
-  ngOnInit(): void {
-  }
-  toogleState():void {
-    this.task.status = !this.task.status
+
+  toogleState(): void {
+    this.task.status = !this.task.status;
   }
 }

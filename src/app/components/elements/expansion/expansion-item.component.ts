@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { state, trigger, style, transition, animate } from '@angular/animations';
-
 import { GlobalConstants } from 'src/app/common/global-constants';
 
 @Component({
@@ -26,44 +25,41 @@ import { GlobalConstants } from 'src/app/common/global-constants';
 })
 export class ExpansionItemComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) {}
   
-  color:string = GlobalConstants.ripplerColor;
-  @Input() title ='title';
+  @Input() title = 'title';
   @Input() icon = 'add_circle';
-  
+
   @Output() onBoardAdd = new EventEmitter<string>();
+
+  color: string = GlobalConstants.ripplerColor;
   formSatus = false;
   addBoardForm!: FormGroup;
 
-   addBoard() :void {
-    const boardName:string = this.addBoardForm.get('item')?.value.trim()
-    if(!boardName) {return}
+   addBoard(): void {
+    const boardName: string = this.addBoardForm.get('item')?.value.trim();
+    if (!boardName) return;
+
     this.onBoardAdd.emit(boardName);
-    this.clear()
+    this.clear();
    }
 
-   
   ngOnInit(): void {
-
     this.addBoardForm = this.fb.group({  
     item:['',Validators.required]
-  }
-  )
+    });
   }
 
-  toggleForm(status: boolean):void {
+  toggleForm(status: boolean): void {
     this.formSatus = status;
   }
 
-  clear():void {
+  clear(): void {
     this.addBoardForm.get('item')?.setValue('');
   }
 
-  clearLocalStorage():void{
-    localStorage.clear()
-    alert('Локальное хранилище очищено')
+  clearLocalStorage(): void {
+    localStorage.clear();
+    alert('Локальное хранилище очищено');
   }
-
-  
 }
