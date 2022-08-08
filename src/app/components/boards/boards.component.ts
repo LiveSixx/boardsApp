@@ -16,7 +16,6 @@ export class BoardsComponent implements OnInit {
   
   constructor(private route: ActivatedRoute, private fb: FormBuilder, private homePage: HomePageComponent){ }
 
-  boardName = '';
   addListBtn = false;
   color:string = GlobalConstants.ripplerColor;
   addListForm!: FormGroup;
@@ -28,9 +27,11 @@ export class BoardsComponent implements OnInit {
   board!: Board;
   selectedList = -1;
   
-  addList():void{
+  addList():void {
+    const listName = this.addListForm.get('listItem')?.value;
+    if(!listName) {return}
     this.list = {
-      listTitle:this.addListForm.value.listItem,
+      listTitle:listName,
       listId: this.listsData.length + 1, 
       uBoardId: Number(this.route.snapshot.paramMap.get('id')),
     } as List
@@ -38,21 +39,21 @@ export class BoardsComponent implements OnInit {
     this.boardLists.push(this.list)
     localStorage.setItem('lists',JSON.stringify(this.listsData))
     this.getArrayOfListsIds(this.boardLists)
-   
+    this.clear()
   }
   getBoard():void{
     const id = this.route.snapshot.paramMap.get('id');
     this.board = this.homePage.getBoard(Number(id)) as Board;
   }
 
-  getArrayOfListsIds(listsOfBorad:List[]):void{
+  getArrayOfListsIds(listsOfBorad:List[]):void {
     for (let i in listsOfBorad) {
       let j = listsOfBorad[i].listId 
       this.boardListsIdsArray.push(String(Number(j)))
     }
   }
 
-  getBoardLists():void{
+  getBoardLists():void {
     if (localStorage.getItem("lists") === null) { return }
     const id = this.route.snapshot.paramMap.get('id');
     let localData:any = localStorage.getItem('lists')
@@ -61,7 +62,7 @@ export class BoardsComponent implements OnInit {
     this.getArrayOfListsIds(this.boardLists)
   }
   
-  addListBtnPressed(status: boolean) :void{
+  addListBtnPressed(status: boolean) :void {
     this.addListBtn = status;
   }
 
@@ -72,11 +73,10 @@ export class BoardsComponent implements OnInit {
       listItem:['',Validators.required]
     }
     )
-    this.boardName = this.route.snapshot.params['id'];
 
   }
   clear():void{
-    this.listName = '';
+    this.addListForm.get('listItem')?.setValue('')
   }
 
 }

@@ -1,8 +1,7 @@
-import { Component, OnInit, Input, ViewChild, ViewChildren } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { state, trigger, style, transition, animate } from '@angular/animations';
 
-import { HomePageComponent } from './../../home-page/home-page.component';
 import { GlobalConstants } from 'src/app/common/global-constants';
 
 @Component({
@@ -11,6 +10,7 @@ import { GlobalConstants } from 'src/app/common/global-constants';
   styleUrls: ['./expansion-item.component.scss'],
   animations: [
     trigger('smoothClose', [
+
       state('initial', style({
         height: '0',
         overflow: 'hidden',
@@ -26,21 +26,23 @@ import { GlobalConstants } from 'src/app/common/global-constants';
 })
 export class ExpansionItemComponent implements OnInit {
 
-  constructor(public homePage: HomePageComponent, private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) { }
   
   color:string = GlobalConstants.ripplerColor;
   @Input() title ='title';
   @Input() icon = 'add_circle';
-  formSatus = false;
   
-  borderName!:string;
+  @Output() onBoardAdd = new EventEmitter<string>();
+  formSatus = false;
   addBoardForm!: FormGroup;
 
-   addBoard(name: string) :void{
-    this.borderName = '';
-    name = name.trim();
-    this.homePage.addBoard(name) 
+   addBoard() :void {
+    const boardName:string = this.addBoardForm.get('item')?.value.trim()
+    if(!boardName) {return}
+    this.onBoardAdd.emit(boardName);
+    this.clear()
    }
+
    
   ngOnInit(): void {
 
@@ -50,12 +52,17 @@ export class ExpansionItemComponent implements OnInit {
   )
   }
 
-  formOpen(status: boolean):void {
+  toggleForm(status: boolean):void {
     this.formSatus = status;
   }
 
-  clear():void{
-    this.borderName = '';
+  clear():void {
+    this.addBoardForm.get('item')?.setValue('');
+  }
+
+  clearLocalStorage():void{
+    localStorage.clear()
+    alert('Локальное хранилище очищено')
   }
 
   

@@ -17,7 +17,7 @@ export class TaskComponent implements OnInit{
   color:string = GlobalConstants.ripplerColor;
   ngOnInit(): void {
   }
-  toogleState():void{
+  toogleState():void {
     this.task.status = !this.task.status
   }
 }

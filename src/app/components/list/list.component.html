@@ -1,6 +1,6 @@
 <div class="list-section-wrapper">
     <div class="list-section-boards-container">
-        <div class="expansion-list-header " [class.expasion-list-expanded] = "formSatus">
+        <div class="expansion-list-header " [class.expasion-list-expanded] = "formStatus">
             <div class="expansion-list-header-elements" (click)="formOpen(true)">
                 <mat-icon aria-hidden="true" aria-label="icon" class="material-icon sm">
                     format_list_numbered</mat-icon>
@@ -8,21 +8,20 @@
                     {{list.listTitle}}
                 </div>
             </div>
-            <div *ngIf="formSatus === true" class="list-close-button" (click)="formOpen(false)">
+            <div *ngIf="formStatus === true" class="list-close-button" (click)="formOpen(false)">
                 <mat-icon  aria-hidden="close" aria-label="icon" class="material-icon sm ">close</mat-icon>
             </div>
         </div>
-            <div [@smoothClose]="!formSatus? 'initial': 'final'">   
+            <div [@smoothClose]="!formStatus? 'initial': 'final'">   
                 <div class="list-section-form-container">
                     <form class="list-section-form-container" [formGroup]="addTaskForm">
             
-                        <input (keyup.enter)="addTask(taskName);clear()" 
+                        <input (keyup.enter)="addTask()" 
                         type="text" 
                         formControlName="item" 
                         name="borderName" 
                         aria-label="Текст элемента" 
                         placeholder="Текст элемента" 
-                        [(ngModel)]="taskName" 
                         autocomplete="off">     
                     </form>
                     <div cdkDropListGroup>

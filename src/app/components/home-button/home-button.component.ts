@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { GlobalConstants } from 'src/app/common/global-constants';
 
 @Component({
@@ -9,7 +9,6 @@ import { GlobalConstants } from 'src/app/common/global-constants';
 export class HomeButtonComponent {
   
   color:string = GlobalConstants.ripplerColor;
-
   smileState = "sentiment_satisfied"
 
 }

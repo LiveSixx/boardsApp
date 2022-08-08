@@ -19,7 +19,7 @@
                     <mat-icon aria-hidden="true" aria-label="icon" class="material-icon sm">format_list_numbered</mat-icon>
                     
                     <form autocomplete="off"  class="board-section-form-addList" [formGroup]="addListForm">
-                        <input  (keyup.enter)="addList(); clear()" 
+                        <input  (keyup.enter)="addList()" 
                         type="text" 
                         formControlName="listItem" 
                         name="listName" 
@@ -35,7 +35,7 @@
                 </div>  
                 
         </div>
-        <app-home-button routerLink=""></app-home-button>
+        <app-home-button matTooltip="Вернуться на главную страницу" matTooltipPosition="below" matTooltipClass="tooltip" routerLink=""></app-home-button>
             <div class="list-section-wrapper">
                 <app-list [list]="list"
                 [class.active-list]="selectedList === i"

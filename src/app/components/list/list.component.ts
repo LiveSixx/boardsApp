@@ -29,16 +29,15 @@ import { Task } from './../../task';
 export class ListComponent implements OnInit {
 
   @Input() list!: List;
-  formSatus = false;
+  formStatus = false;
   addTaskForm!: FormGroup;
-  taskName = '';
   task!: Task;
   tasks: Task[] = [];
   listTasks: Task[] = [];
   isListEmpty:boolean = true;
   
 
-  onDrop(event: CdkDragDrop<Task[]>):void{
+  onDrop(event: CdkDragDrop<Task[]>):void {
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data, 
@@ -55,7 +54,8 @@ export class ListComponent implements OnInit {
     
   }
 
-  addTask(taskName: string):void{
+  addTask():void {
+    const taskName = this.addTaskForm.get('item')?.value
     if(!taskName) { return; }
     this.task = {
       taskTitle:taskName,
@@ -66,6 +66,7 @@ export class ListComponent implements OnInit {
     this.tasks.push(this.task)
     this.listTasks.push(this.task)
     localStorage.setItem('tasks',JSON.stringify(this.tasks))
+    this.clear()
   }
   getListTasks():void{
     if (localStorage.getItem("tasks") === null) { return }
@@ -75,7 +76,7 @@ export class ListComponent implements OnInit {
     if (this.listTasks.length == 0){this.isListEmpty = true}
   }
   formOpen(status: boolean) :void{
-    this.formSatus = status;
+    this.formStatus = status;
   }
   constructor(private fb: FormBuilder, public boards:BoardsComponent) { }
   
@@ -88,7 +89,7 @@ export class ListComponent implements OnInit {
   }
 
   clear():void{
-    this.taskName = '';
+    this.addTaskForm.get('item')?.setValue('')
   }
 
 }

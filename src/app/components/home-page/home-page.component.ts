@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChild  } from '@angular/core';
-import { Injectable } from '@angular/core';
+import { Component, Injectable, OnInit} from '@angular/core';
 import { Board } from './../../board';
 
 @Component({
@@ -22,30 +21,23 @@ export class HomePageComponent implements OnInit {
   
   }
 
-  getBoards():void{
+  getBoards():void {
     if (localStorage.getItem("boards") === null) { return }
     let localData:any = localStorage.getItem('boards');
     this.boardsList = JSON.parse(localData)
   }
 
-  getBoard(id:Number):Board{
+  getBoard(id:Number):Board {
     let localData:any = localStorage.getItem('boards');
     this.boardsList = JSON.parse(localData)
     return this.boardsList.find(x => x.boardId === id) as Board
   }
 
-  addBoard(name:string):void{
+  addBoard(name:string):void {
     this.boardsList.push({
       boardTitle:name,
       boardId: this.boardsList.length + 1,    
     });
     localStorage.setItem('boards',JSON.stringify(this.boardsList))
   }
-
-  clearBords():void{
-    localStorage.clear()
-    alert('Local storge cleared')
-  }
-  
-  
 }

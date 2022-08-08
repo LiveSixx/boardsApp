@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input, NgModule } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router, } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { filter, map } from 'rxjs';

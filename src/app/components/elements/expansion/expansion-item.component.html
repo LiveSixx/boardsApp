@@ -1,13 +1,13 @@
 <div matRipple [matRippleColor]="color" class="expansion-header" [ngStyle]="{'cursor':formSatus ? 'default' : 'pointer' }">
-    <div class="expansion-header-elements" (click)="formOpen(true)">
-        <a (click)="this.homePage.clearBords()"  matTooltip="Очистить локальное хранилище" matTooltipPosition="below" matTooltipClass="tooltip"> <mat-icon aria-hidden="true" aria-label="icon" class="material-icon md">
+    <div class="expansion-header-elements" (click)="toggleForm(true)">
+        <a (click)="clearLocalStorage()"  matTooltip="Очистить локальное хранилище" matTooltipPosition="below" matTooltipClass="tooltip"> <mat-icon aria-hidden="true" aria-label="icon" class="material-icon md">
            {{icon}}</mat-icon>
         </a>
         <div class="expansion-title">
             {{title}}
         </div>
     </div>
-    <div *ngIf="formSatus === true" class="close-button" (click)="formOpen(false)">
+    <div *ngIf="formSatus === true" class="close-button" (click)="toggleForm(false)">
         <mat-icon  aria-hidden="close" aria-label="icon" class="material-icon sm ">close</mat-icon>
     </div>
 </div>
@@ -15,12 +15,11 @@
     <div class="home-section-form-container">
         <form class="home-section-form-container" [formGroup]="addBoardForm" (keydown.enter)="$event.preventDefault()">
             
-            <input type="text" formControlName="item" name="borderName" aria-label="Название доски" placeholder="Название доски" [(ngModel)]="borderName" autocomplete="off">   
+            <input type="text" formControlName="item" name="borderName" aria-label="Название доски" placeholder="Название доски" autocomplete="off">   
             <div class="home-section-form-buttons">
-            <button matRipple [matRippleColor]="color" class="btn-save" [disabled]="addBoardForm.invalid" (click)="addBoard(borderName)" type="submit">Сохранить</button>
+            <button matRipple [matRippleColor]="color" class="btn-save" [disabled]="addBoardForm.invalid" (click)="addBoard()" type="submit">Сохранить</button>
             <button class="btn-cancel" (click)="clear()"  type="submit">Отмена</button>
             </div>
-            
         </form>
     </div>
     <ng-content>
